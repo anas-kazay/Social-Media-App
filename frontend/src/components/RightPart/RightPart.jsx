@@ -1,8 +1,12 @@
 import { Brightness4, MoreHoriz, Search } from "@mui/icons-material";
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import SubscriptionModal from "../SubscriptionModal/SubscriptionModal";
 
 const RightPart = () => {
+  const [openSubscriptionModel, setOpenSubscriptionModel] = useState(false);
+  const handleOpenSubscriptionModel = () => setOpenSubscriptionModel(true);
+  const handleCloseSubscriptionModel = () => setOpenSubscriptionModel(false);
   const handleChangeTheme = () => {
     console.log("handle change theme");
   };
@@ -27,6 +31,7 @@ const RightPart = () => {
         <Button
           variant="contained"
           sx={{ padding: "10px", paddingX: "20px", borderRadius: "25px" }}
+          onClick={handleOpenSubscriptionModel}
         >
           Get Verified
         </Button>
@@ -47,6 +52,12 @@ const RightPart = () => {
             </div>
           </div>
         ))}
+      </section>
+      <section>
+        <SubscriptionModal
+          open={openSubscriptionModel}
+          handleClose={handleCloseSubscriptionModel}
+        />
       </section>
     </div>
   );
